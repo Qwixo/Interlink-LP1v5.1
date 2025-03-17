@@ -10,6 +10,9 @@ import StudyOptionsSection from '../components/StudyOptionsSection';
 import TimelineSection from '../components/TimelineSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import OnTheFenceSection from '../components/OnTheFenceSection';
+import IsRightForYouSection from '../components/IsRightForYouSection';
+import FAQSection from '../components/FAQSection';
+import FinalCTASection from '../components/FinalCTASection';
 
 const GuidePage = () => {
   const [isGuideExpanded, setIsGuideExpanded] = useState(false);
@@ -283,6 +286,15 @@ const GuidePage = () => {
       
       {/* NEW SECTION: On The Fence */}
       <OnTheFenceSection />
+      
+      {/* NEW SECTION: Is Right For You */}
+      <IsRightForYouSection />
+      
+      {/* NEW SECTION: FAQ */}
+      <FAQSection />
+      
+      {/* FINAL CTA SECTION */}
+      <FinalCTASection />
       
       <Footer />
     </div>

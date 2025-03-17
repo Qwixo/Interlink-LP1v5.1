@@ -1,36 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Map, FileText, DollarSign, Rocket, HelpCircle } from 'lucide-react';
+import { CheckCircle, XCircle, ArrowRight } from 'lucide-react';
 
 const IsRightForYouSection = () => {
-  const cards = [
-    {
-      icon: <HelpCircle className="w-10 h-10 text-[#064088]" />,
-      title: "You're dreaming of the U.S. but need clear, simple steps to get started.",
-      description: "You have the dream but need clear steps to make it happen."
-    },
-    {
-      icon: <DollarSign className="w-10 h-10 text-[#064088]" />,
-      title: "You want to plan your budget without guesswork.",
-      description: "Discover ways to make studying abroad financially possible."
-    },
-    {
-      icon: <FileText className="w-10 h-10 text-[#064088]" />,
-      title: "You're unsure about the visa process or school requirements.",
-      description: "No more guessing. Learn exactly what you need to apply."
-    },
-    {
-      icon: <Map className="w-10 h-10 text-[#064088]" />,
-      title: "You feel your English level might not be enough—but don't want that to stop you.",
-      description: "Don't worry about your language skills. We'll show you how to succeed."
-    },
-    {
-      icon: <Rocket className="w-10 h-10 text-[#064088]" />,
-      title: "You want a life-changing experience that opens doors to global careers.",
-      description: "This could be the best decision of your life. Let's make it real!"
-    }
-  ];
-
   return (
     <section className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-4">
@@ -41,63 +13,103 @@ const IsRightForYouSection = () => {
           transition={{ duration: 0.6 }}
           className="text-4xl md:text-5xl font-bold text-center text-[#064088] mb-12"
         >
-          Is This Right for You?
+          Is INTERLINK the Right Fit for You?
         </motion.h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {cards.slice(0, 4).map((card, index) => (
-            <CardItem key={index} card={card} index={index} />
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          {/* Perfect For You Column */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-gray-50 p-6 md:p-8 rounded-xl"
+          >
+            <div className="flex items-center mb-6">
+              <CheckCircle className="w-8 h-8 text-green-600 mr-3" />
+              <h3 className="text-2xl font-bold text-[#064088]">
+                INTERLINK is Perfect for You If…
+              </h3>
+            </div>
+            
+            <ul className="space-y-4">
+              <ListItem icon={<CheckCircle className="w-5 h-5 text-green-600" />}>
+                You dream of studying in the U.S. and need a clear, guided path.
+              </ListItem>
+              <ListItem icon={<CheckCircle className="w-5 h-5 text-green-600" />}>
+                You want to improve your English quickly with expert teachers and small class sizes.
+              </ListItem>
+              <ListItem icon={<CheckCircle className="w-5 h-5 text-green-600" />}>
+                You're looking for a supportive community to help you every step of the way.
+              </ListItem>
+              <ListItem icon={<CheckCircle className="w-5 h-5 text-green-600" />}>
+                You want a TOEFL-free pathway to a U.S. university.
+              </ListItem>
+              <ListItem icon={<CheckCircle className="w-5 h-5 text-green-600" />}>
+                You prefer personalized guidance over large, one-size-fits-all courses.
+              </ListItem>
+            </ul>
+          </motion.div>
+          
+          {/* Might Not Be For You Column */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-gray-50 p-6 md:p-8 rounded-xl"
+          >
+            <div className="flex items-center mb-6">
+              <XCircle className="w-8 h-8 text-red-500 mr-3" />
+              <h3 className="text-2xl font-bold text-[#064088]">
+                INTERLINK Might Not Be for You If…
+              </h3>
+            </div>
+            
+            <ul className="space-y-4">
+              <ListItem icon={<XCircle className="w-5 h-5 text-red-500" />}>
+                You only need basic, casual English without academic goals.
+              </ListItem>
+              <ListItem icon={<XCircle className="w-5 h-5 text-red-500" />}>
+                You're looking for a fully self-taught course with no structured support.
+              </ListItem>
+              <ListItem icon={<XCircle className="w-5 h-5 text-red-500" />}>
+                You're not interested in eventually studying in the U.S. or improving your professional opportunities.
+              </ListItem>
+            </ul>
+          </motion.div>
         </div>
         
-        {/* The 5th card spans full width */}
-        <div className="mt-6 relative">
-          <CardItem card={cards[4]} index={4} fullWidth highlightText />
-        </div>
+        {/* Apply Now Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex justify-center"
+        >
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="bg-[#dc5d33] text-white font-bold py-4 px-8 rounded-lg shadow-md hover:bg-[#c24e2b] transition-all duration-300 flex items-center justify-center gap-2 text-lg"
+          >
+            <span>Apply Now – See How We Can Help</span>
+            <ArrowRight size={20} />
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );
 };
 
-interface CardProps {
-  card: {
-    icon: React.ReactNode;
-    title: string;
-    description: string;
-  };
-  index: number;
-  fullWidth?: boolean;
-  highlightText?: boolean;
-}
-
-const CardItem = ({ card, index, fullWidth = false, highlightText = false }: CardProps) => {
+const ListItem = ({ icon, children }: { icon: React.ReactNode, children: React.ReactNode }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ y: -5, transition: { duration: 0.2 } }}
-      className={`bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 ${
-        fullWidth ? 'md:col-span-2 md:max-w-2xl md:mx-auto' : ''
-      } ${highlightText ? 'border-2 border-[#064088]' : ''}`}
-    >
-      <div className="mb-4">
-        {card.icon}
+    <li className="flex items-start">
+      <div className="mt-1 mr-3 flex-shrink-0">
+        {icon}
       </div>
-      <h3 className="text-lg font-bold mb-2 text-gray-900">
-        {card.title}
-      </h3>
-      {highlightText ? (
-        <p className="text-gray-700">
-          This could be the <span className="font-bold bg-yellow-100 px-1 py-0.5 rounded">best decision of your life</span>. Let's make it real!
-        </p>
-      ) : (
-        <p className="text-gray-700">
-          {card.description}
-        </p>
-      )}
-    </motion.div>
+      <span className="text-gray-700">{children}</span>
+    </li>
   );
 };
 

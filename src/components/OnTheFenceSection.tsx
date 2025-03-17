@@ -24,9 +24,16 @@ const OnTheFenceSection = () => {
           </div>
           
           <div className="mb-8">
-            <p className="text-lg text-gray-700 italic font-medium mb-6 text-center">
-              "I know making a decision like this can feel overwhelming—but you're not alone."
-            </p>
+            <div className="flex flex-col md:flex-row items-center gap-6 mb-6">
+              {/* Director's Image Placeholder */}
+              <div className="w-[150px] h-[150px] bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0 border-4 border-[#064088]/20">
+                <span className="text-gray-500 text-sm">Director's Photo</span>
+              </div>
+              
+              <p className="text-lg text-gray-700 italic font-medium text-center md:text-left">
+                "I know making a decision like this can feel overwhelming—but you're not alone."
+              </p>
+            </div>
             
             <p className="text-gray-700 mb-6">
               At INTERLINK, we've helped thousands of students just like you. Many of them started with doubts, just like you might have right now.
